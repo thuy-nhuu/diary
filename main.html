@@ -3,398 +3,137 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <title>Nhật ký</title>
+    <title>Choose Profile</title>
 
     <style>
-      body {
-        max-width: 800px;
-        margin: auto;
-        padding: 30px;
-        background: linear-gradient(135deg, #fff7fb, #f5f3ff);
-
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
         font-family: "Quicksand", sans-serif;
       }
 
-      h1 {
-        text-align: center;
-        font-size: 48px;
-        margin-bottom: 10px;
-        color: #4c1d95;
-      }
-
-      #writer {
-        text-align: center;
-        color: #666;
-      }
-
-      #writeBtn {
-        display: block;
-        margin: 25px auto;
-        padding: 14px 28px;
-        border: none;
-        border-radius: 999px;
-        background: linear-gradient(135deg, #c084fc, #8b5cf6);
-
-        color: white;
-        font-weight: 700;
-        cursor: pointer;
-        transition: 0.2s;
-      }
-
-      #writeBtn:hover {
-        transform: translateY(-2px);
-      }
-
-      #editor {
-        display: none;
-        margin-bottom: 20px;
-      }
-
-      textarea {
-        width: 100%;
-        height: 220px;
-        padding: 18px;
-        border: none;
-        border-radius: 18px;
-        background: white;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-
-        font-size: 16px;
-      }
-
-      #saveBtn {
-        margin-top: 10px;
-        padding: 10px 20px;
-      }
-
-      .card {
-        background: white;
-        border-radius: 20px;
-        padding: 20px;
-        margin-top: 18px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-      }
-      .author {
-        font-size: 22px;
-        font-weight: 700;
-        color: black;
-      }
-
-      .time {
-        color: gray;
-        font-size: 14px;
-        margin-top: 5px;
-      }
-
-      .readBtn {
-        margin-top: 10px;
-      }
-
-      .popup {
-        position: fixed;
-        inset: 0;
-
-        background: rgba(0, 0, 0, 0.4);
-
-        display: none;
-
+      body {
+        min-height: 100vh;
+        display: flex;
         justify-content: center;
         align-items: center;
 
-        z-index: 1000;
+        background:
+          radial-gradient(circle at top left, #ffe4f1, transparent 40%),
+          radial-gradient(circle at bottom right, #e9d5ff, transparent 40%),
+          linear-gradient(135deg, #fff8fc, #f7f2ff);
+
+        overflow: hidden;
       }
 
-      .popup-content {
-        width: min(700px, 90%);
-        max-height: 80vh;
-
-        overflow: auto;
-
-        background: white;
-
-        border-radius: 20px;
-
-        padding: 25px;
-
-        position: relative;
+      .container {
+        text-align: center;
       }
 
-      #closePopup {
-        position: absolute;
-        right: 15px;
-        top: 15px;
+      h1 {
+        font-size: 52px;
+        color: #5b21b6;
+        margin-bottom: 10px;
+      }
 
-        border: none;
-        background: none;
+      .subtitle {
+        color: #777;
+        margin-bottom: 50px;
+        font-size: 18px;
+      }
+
+      .profiles {
+        display: flex;
+        gap: 35px;
+        justify-content: center;
+      }
+
+      .profile {
+        width: 220px;
+        height: 260px;
+
+        background: rgba(255, 255, 255, 0.75);
+
+        backdrop-filter: blur(15px);
+
+        border-radius: 28px;
 
         cursor: pointer;
 
-        font-size: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        transition: 0.3s;
+
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
       }
 
-      #popupContent {
-        white-space: pre-wrap;
-        line-height: 1.8;
-        margin-top: 20px;
+      .profile:hover {
+        transform: translateY(-10px) scale(1.03);
+
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
       }
 
-      #deleteBtn {
-        margin-top: 25px;
+      .avatar {
+        width: 110px;
+        height: 110px;
+
+        border-radius: 50%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        color: white;
+        font-size: 48px;
+        font-weight: bold;
+
+        margin-bottom: 20px;
+      }
+
+      .nhu {
+        background: linear-gradient(135deg, #d8b4fe, #9333ea);
+      }
+
+      .nam {
+        background: linear-gradient(135deg, #5eead4, #0f766e);
+      }
+
+      .name {
+        font-size: 28px;
+        font-weight: 700;
+        color: #333;
       }
     </style>
   </head>
 
   <body>
-    <div id="popup" class="popup">
-      <div class="popup-content">
-        <button id="closePopup">✕</button>
+    <div class="container">
+      <h1>Chọn người dùng</h1>
 
-        <h2 id="popupAuthor"></h2>
+      <p class="subtitle">Viết/ Đọc với tư cách:</p>
 
-        <p id="popupTime"></p>
+      <div class="profiles">
+        <div class="profile" onclick="selectProfile('Như')">
+          <div class="avatar nhu">N</div>
+          <div class="name">Như</div>
+        </div>
 
-        <div id="popupContent"></div>
-
-        <button id="deleteBtn">🗑️ Xóa</button>
-        <button id="editBtn">✏️ Sửa</button>
+        <div class="profile" onclick="selectProfile('Nam')">
+          <div class="avatar nam">N</div>
+          <div class="name">Nam</div>
+        </div>
       </div>
     </div>
 
-    <h1>Our Diary 💌</h1>
-
-    <p id="writer"></p>
-
-    <button id="writeBtn">+ Viết nhật ký</button>
-
-    <div id="editor">
-      <textarea id="content" placeholder="Hôm nay có gì muốn kể..."></textarea>
-
-      <button id="saveBtn">Lưu</button>
-    </div>
-
-    <div id="list"></div>
-
-    <script type="module">
-      import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
-
-      const supabaseUrl = "https://kxhzsfclgrgfratvoffm.supabase.co";
-
-      const supabaseKey =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt4aHpzZmNsZ3JnZnJhdHZvZmZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE5ODgxODQsImV4cCI6MjA5NzU2NDE4NH0.NWYnVXvXw_Gja9jIlTZuVOTxPDA3s_7gwK-EWe0iZfE";
-
-      const supabase = createClient(supabaseUrl, supabaseKey);
-
-      const writer = localStorage.getItem("writer");
-
-      // ===== ELEMENTS =====
-
-      const writerText = document.getElementById("writer");
-
-      const writeBtn = document.getElementById("writeBtn");
-
-      const saveBtn = document.getElementById("saveBtn");
-
-      const editor = document.getElementById("editor");
-
-      const contentInput = document.getElementById("content");
-
-      const list = document.getElementById("list");
-
-      const popup = document.getElementById("popup");
-
-      const popupAuthor = document.getElementById("popupAuthor");
-
-      const popupTime = document.getElementById("popupTime");
-
-      const popupContent = document.getElementById("popupContent");
-
-      const deleteBtn = document.getElementById("deleteBtn");
-
-      const editBtn = document.getElementById("editBtn");
-
-      const closePopup = document.getElementById("closePopup");
-
-      // ===== BIẾN =====
-
-      let currentDiaryId = null;
-
-      // ===== HIỂN THỊ NGƯỜI VIẾT =====
-
-      writerText.innerText = "Đang viết với tư cách: " + writer;
-
-      // ===== MỞ / ĐÓNG KHUNG VIẾT =====
-
-      writeBtn.onclick = () => {
-        editor.style.display =
-          editor.style.display === "block" ? "none" : "block";
-      };
-
-      // ===== LƯU NHẬT KÝ =====
-
-      saveBtn.onclick = saveDiary;
-
-      async function saveDiary() {
-        const content = contentInput.value.trim();
-
-        if (!content) return;
-
-        const { error } = await supabase.from("diaries").insert([
-          {
-            author: writer,
-            content: content,
-          },
-        ]);
-
-        console.log("INSERT ERROR:", error);
-
-        if (error) {
-          alert(JSON.stringify(error));
-          return;
-        }
-
-        contentInput.value = "";
-
-        editor.style.display = "none";
-
-        loadDiaries();
+    <script>
+      function selectProfile(name) {
+        localStorage.setItem("writer", name);
+        window.location.href = "main.html";
       }
-
-      // ===== TẢI DANH SÁCH =====
-
-      async function loadDiaries() {
-        const { data, error } = await supabase
-          .from("diaries")
-          .select("*")
-          .order("created_at", { ascending: false });
-
-        if (error) {
-          console.log(error);
-          return;
-        }
-
-        list.innerHTML = "";
-
-        data.forEach((diary) => {
-          const color = diary.author === "Như" ? "#c084fc" : "#14b8a6";
-          const card = document.createElement("div");
-
-          card.className = "card";
-
-          card.style.borderLeft = `6px solid ${color}`;
-
-          card.innerHTML = `
-            <div class="author">
-                ${diary.author}
-            </div>
-
-            <div class="time">
-                ${new Date(diary.created_at).toLocaleString()}
-            </div>
-
-            <button class="readBtn">
-                💌 Đọc
-            </button>
-        `;
-
-          card.querySelector(".readBtn").onclick = () => openDiary(diary);
-
-          list.appendChild(card);
-        });
-      }
-
-      // ===== POPUP =====
-
-      function openDiary(diary) {
-        console.log("writer =", writer);
-        console.log("author =", diary.author);
-        currentDiaryId = diary.id;
-
-        popupAuthor.textContent = diary.author;
-
-        popupTime.textContent = new Date(diary.created_at).toLocaleString();
-
-        popupContent.textContent = diary.content;
-
-        if (writer === diary.author) {
-          deleteBtn.style.display = "inline-block";
-
-          editBtn.style.display = "inline-block";
-        } else {
-          deleteBtn.style.display = "none";
-
-          editBtn.style.display = "none";
-        }
-
-        popup.style.display = "flex";
-      }
-
-      closePopup.onclick = () => {
-        popup.style.display = "none";
-      };
-
-      // ===== XOÁ =====
-
-      deleteBtn.onclick = async () => {
-        console.log("currentDiaryId =", currentDiaryId);
-
-        if (!confirm("Xóa nhật ký này?")) {
-          return;
-        }
-
-        const { data, error } = await supabase
-          .from("diaries")
-          .delete()
-          .eq("id", currentDiaryId)
-          .select();
-
-        console.log("deleted data =", data);
-        console.log("delete error =", error);
-
-        if (error) {
-          alert(error.message);
-          return;
-        }
-
-        popup.style.display = "none";
-
-        await loadDiaries();
-      };
-
-      // ===== SỬA =====
-
-      editBtn.onclick = async () => {
-        const oldText = popupContent.textContent;
-
-        const newText = prompt("Sửa nội dung:", oldText);
-
-        if (!newText || newText === oldText) {
-          return;
-        }
-
-        const { error } = await supabase
-          .from("diaries")
-          .update({
-            content: newText,
-          })
-          .eq("id", currentDiaryId);
-
-        if (error) {
-          alert(error.message);
-          return;
-        }
-
-        popupContent.textContent = newText;
-
-        loadDiaries();
-      };
-      // ===== KHỞI ĐỘNG =====
-
-      loadDiaries();
     </script>
   </body>
 </html>
