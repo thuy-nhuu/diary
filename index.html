@@ -1,143 +1,139 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Choose Profile</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Choose Profile</title>
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
-}
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Quicksand", sans-serif;
+      }
 
-body{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background: linear-gradient(
-        135deg,
-        #fff5f7,
-        #f8f4ff
-    );
-}
+      body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-.container{
-    text-align:center;
-}
+        background:
+          radial-gradient(circle at top left, #ffe4f1, transparent 40%),
+          radial-gradient(circle at bottom right, #e9d5ff, transparent 40%),
+          linear-gradient(135deg, #fff8fc, #f7f2ff);
 
-h1{
-    margin-bottom:15px;
-    font-size:36px;
-    color:#2d2d2d;
-}
+        overflow: hidden;
+      }
 
-.subtitle{
-    color:#666;
-    margin-bottom:50px;
-}
+      .container {
+        text-align: center;
+      }
 
-.profiles{
-    display:flex;
-    gap:30px;
-    justify-content:center;
-}
+      h1 {
+        font-size: 52px;
+        color: #5b21b6;
+        margin-bottom: 10px;
+      }
 
-.profile{
-    width:180px;
-    height:220px;
-    background: rgba(255,255,255,0.8);
-    backdrop-filter: blur(10px);
-    border:1px solid rgba(255,255,255,0.5);
-    border-radius:16px;
-    cursor:pointer;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    transition:0.2s;
-    box-shadow:
-        0 8px 24px rgba(0,0,0,.08);
-}
+      .subtitle {
+        color: #777;
+        margin-bottom: 50px;
+        font-size: 18px;
+      }
 
-.profile:hover{
-    transform:translateY(-8px);
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.12);
-}
+      .profiles {
+        display: flex;
+        gap: 35px;
+        justify-content: center;
+      }
 
-.avatar{
-    width:90px;
-    height:90px;
-    border-radius:50%;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:38px;
-    margin-bottom:20px;
-}
+      .profile {
+        width: 220px;
+        height: 260px;
 
-.nhu{
-    background:
-    linear-gradient(
-        135deg,
-        #c084fc,
-        #9333ea
-    );
-}
+        background: rgba(255, 255, 255, 0.75);
 
-.nam{
-    background:
-    linear-gradient(
-        135deg,
-        #2dd4bf,
-        #0d9488
-    );
-}
+        backdrop-filter: blur(15px);
 
-.name{
-    font-size:22px;
-    color:#333;
-}
-</style>
-</head>
+        border-radius: 28px;
 
-<body>
+        cursor: pointer;
 
-<div class="container">
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
-    <h1>Chọn người dùng</h1>
+        transition: 0.3s;
 
-    <p class="subtitle">
-        Viết/ Đọc với tư cách:
-    </p>
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+      }
 
-    <div class="profiles">
+      .profile:hover {
+        transform: translateY(-10px) scale(1.03);
 
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+      }
+
+      .avatar {
+        width: 110px;
+        height: 110px;
+
+        border-radius: 50%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        color: white;
+        font-size: 48px;
+        font-weight: bold;
+
+        margin-bottom: 20px;
+      }
+
+      .nhu {
+        background: linear-gradient(135deg, #d8b4fe, #9333ea);
+      }
+
+      .nam {
+        background: linear-gradient(135deg, #5eead4, #0f766e);
+      }
+
+      .name {
+        font-size: 28px;
+        font-weight: 700;
+        color: #333;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chọn người dùng</h1>
+
+      <p class="subtitle">Viết/ Đọc với tư cách:</p>
+
+      <div class="profiles">
         <div class="profile" onclick="selectProfile('Như')">
-            <div class="avatar nhu">N</div>
-            <div class="name">Như</div>
+          <div class="avatar nhu">N</div>
+          <div class="name">Như</div>
         </div>
 
         <div class="profile" onclick="selectProfile('Nam')">
-            <div class="avatar nam">N</div>
-            <div class="name">Nam</div>
+          <div class="avatar nam">N</div>
+          <div class="name">Nam</div>
         </div>
-
+      </div>
     </div>
 
-</div>
-
-<script>
-function selectProfile(name){
-    localStorage.setItem("writer", name);
-    window.location.href = "main.html";
-}
-</script>
-
-</body>
+    <script>
+      function selectProfile(name) {
+        localStorage.setItem("writer", name);
+        window.location.href = "main.html";
+      }
+    </script>
+  </body>
 </html>
