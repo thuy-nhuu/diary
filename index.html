@@ -3,52 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Choose Profile?</title>
+<title>Choose Profile</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: Arial, sans-serif;
+    font-family:Arial, sans-serif;
 }
 
 body{
-    height:100vh;
+    min-height:100vh;
     display:flex;
-    flex-direction:column;
     justify-content:center;
     align-items:center;
-    background:#f5f5f5;
-}
-
-h1{
-    margin-bottom:50px;
-    font-size:40px;
-    color:#333;
+    background: linear-gradient(
+        135deg,
+        #fff5f7,
+        #f8f4ff
+    );
 }
 
 .container{
+    text-align:center;
+}
+
+h1{
+    margin-bottom:15px;
+    font-size:36px;
+    color:#2d2d2d;
+}
+
+.subtitle{
+    color:#666;
+    margin-bottom:50px;
+}
+
+.profiles{
     display:flex;
     gap:30px;
+    justify-content:center;
 }
 
 .profile{
     width:180px;
     height:220px;
-    background:white;
-    border-radius:15px;
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(10px);
+    border:1px solid rgba(255,255,255,0.5);
+    border-radius:16px;
+    cursor:pointer;
     display:flex;
     flex-direction:column;
-    align-items:center;
     justify-content:center;
-    cursor:pointer;
-    transition:0.3s;
-    box-shadow:0 4px 10px rgba(0,0,0,.08);
+    align-items:center;
+    transition:0.2s;
+    box-shadow:
+        0 8px 24px rgba(0,0,0,.08);
 }
 
 .profile:hover{
-    transform:translateY(-5px);
+    transform:translateY(-8px);
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.12);
 }
 
 .avatar{
@@ -56,19 +74,29 @@ h1{
     height:90px;
     border-radius:50%;
     color:white;
-    font-size:40px;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
+    font-size:38px;
     margin-bottom:20px;
 }
 
 .nhu{
-    background:#a855f7;
+    background:
+    linear-gradient(
+        135deg,
+        #c084fc,
+        #9333ea
+    );
 }
 
 .nam{
-    background:#14b8a6;
+    background:
+    linear-gradient(
+        135deg,
+        #2dd4bf,
+        #0d9488
+    );
 }
 
 .name{
@@ -80,18 +108,26 @@ h1{
 
 <body>
 
-<h1>Ai đang viết?</h1>
-
 <div class="container">
 
-    <div class="profile" onclick="selectProfile('Như')">
-        <div class="avatar nhu">N</div>
-        <div class="name">Như</div>
-    </div>
+    <h1>Chọn người dùng</h1>
 
-    <div class="profile" onclick="selectProfile('Nam')">
-        <div class="avatar nam">N</div>
-        <div class="name">Nam</div>
+    <p class="subtitle">
+        Viết/ Đọc với tư cách:
+    </p>
+
+    <div class="profiles">
+
+        <div class="profile" onclick="selectProfile('Như')">
+            <div class="avatar nhu">N</div>
+            <div class="name">Như</div>
+        </div>
+
+        <div class="profile" onclick="selectProfile('Nam')">
+            <div class="avatar nam">N</div>
+            <div class="name">Nam</div>
+        </div>
+
     </div>
 
 </div>
@@ -99,9 +135,7 @@ h1{
 <script>
 function selectProfile(name){
     localStorage.setItem("writer", name);
-
-    // chuyển sang trang nhật ký
-    window.location.href = "textarea.html";
+    window.location.href = "main.html";
 }
 </script>
 
