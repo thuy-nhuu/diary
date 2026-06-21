@@ -1,1 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choose Profile?</title>
 
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:#f5f5f5;
+}
+
+h1{
+    margin-bottom:50px;
+    font-size:40px;
+    color:#333;
+}
+
+.container{
+    display:flex;
+    gap:30px;
+}
+
+.profile{
+    width:180px;
+    height:220px;
+    background:white;
+    border-radius:15px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+
+.profile:hover{
+    transform:translateY(-5px);
+}
+
+.avatar{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    color:white;
+    font-size:40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:20px;
+}
+
+.nhu{
+    background:#a855f7;
+}
+
+.nam{
+    background:#14b8a6;
+}
+
+.name{
+    font-size:22px;
+    color:#333;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Ai đang viết?</h1>
+
+<div class="container">
+
+    <div class="profile" onclick="selectProfile('Như')">
+        <div class="avatar nhu">N</div>
+        <div class="name">Như</div>
+    </div>
+
+    <div class="profile" onclick="selectProfile('Nam')">
+        <div class="avatar nam">N</div>
+        <div class="name">Nam</div>
+    </div>
+
+</div>
+
+<script>
+function selectProfile(name){
+    localStorage.setItem("writer", name);
+
+    // chuyển sang trang nhật ký
+    window.location.href = "textarea.html";
+}
+</script>
+
+</body>
+</html>
